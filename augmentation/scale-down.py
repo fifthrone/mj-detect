@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import math
 
-SCALE = 0.8
+SCALE = 0.9
 
 def load_bbox(file_path, image_shape):
     with open(file_path, 'r') as f:

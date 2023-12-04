@@ -77,17 +77,17 @@ def main():
         cv2.imwrite(os.path.join(aug_image_dir, base + '_cw90.jpg'), rotated_image)
         save_bbox(os.path.join(aug_label_dir, base + '_cw90.txt'), rotated_bboxes, image.shape)
 
-        # Augmentation: counter-clockwise 90 degrees rotation
-        rotated_image = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
-        rotated_bboxes = rotate_bbox(image, bboxes, 90)
-        cv2.imwrite(os.path.join(aug_image_dir, base + '_ccw90.jpg'), rotated_image)
-        save_bbox(os.path.join(aug_label_dir, base + '_ccw90.txt'), rotated_bboxes, image.shape)
+        # # Augmentation: counter-clockwise 90 degrees rotation
+        # rotated_image = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
+        # rotated_bboxes = rotate_bbox(image, bboxes, 90)
+        # cv2.imwrite(os.path.join(aug_image_dir, base + '_ccw90.jpg'), rotated_image)
+        # save_bbox(os.path.join(aug_label_dir, base + '_ccw90.txt'), rotated_bboxes, image.shape)
 
         # Augmentation: counter-clockwise 180 degrees rotation
-        rotated_image = cv2.rotate(image, cv2.ROTATE_180)
-        rotated_bboxes = rotate_bbox(image, bboxes, 180)
-        cv2.imwrite(os.path.join(aug_image_dir, base + '_ccw180.jpg'), rotated_image)
-        save_bbox(os.path.join(aug_label_dir, base + '_ccw180.txt'), rotated_bboxes, image.shape)
+        # rotated_image = cv2.rotate(image, cv2.ROTATE_180)
+        # rotated_bboxes = rotate_bbox(image, bboxes, 180)
+        # cv2.imwrite(os.path.join(aug_image_dir, base + '_ccw180.jpg'), rotated_image)
+        # save_bbox(os.path.join(aug_label_dir, base + '_ccw180.txt'), rotated_bboxes, image.shape)
 
 
 if __name__ == '__main__':

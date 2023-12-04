@@ -14,7 +14,7 @@ image_files = sorted(os.listdir(images_folder))
 
 
 
-for image_file in image_files[:5]:
+for image_file in image_files[:6]:
     if not image_file.endswith('.jpg'):
       continue  
     

@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import math
 
-DEGREE = 80
+DEGREE = 85
 
 def interpolate(x, x1, x2, y1, y2):
     # Calculate the slope of the line
