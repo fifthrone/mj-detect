@@ -16,8 +16,9 @@ total: 42 classes
 Datasets collect
 
 - roboflow
+  - https://universe.roboflow.com/roman-nguyen/mahjong-vtacs
   - https://universe.roboflow.com/mahjong-uko7s/sg-mahjong
-  - https://universe.roboflow.com/stardusteins-zxgtc/mahjong-detect
+  - https://universe.roboflow.com/calvin-hsu/mahjong-t25l9
 - github
   - https://github.com/hlin117/mahjongCV
   - https://github.com/Camerash/mahjong-dataset

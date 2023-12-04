@@ -7,7 +7,7 @@ names: ['b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'c1', 'c2', 'c3', 
 
 roboflow:
   workspace: marco-liu-vwkdl
-  project: mj-manual-aug
-  version: 1
+  project: mj3
+  version: 2
   license: CC BY 4.0
-  url: https://universe.roboflow.com/marco-liu-vwkdl/mj-manual-aug/dataset/1
+  url: https://universe.roboflow.com/marco-liu-vwkdl/mj3/dataset/2

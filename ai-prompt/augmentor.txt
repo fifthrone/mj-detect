@@ -1,0 +1,112 @@
+
+--shear
+use the above code as a template
+write a python augmentor to augment images and corresponding bounding box.
+
+My folder structure:
+images: 1.jpg, 2.jpg
+labels: 1.txt, 2.txt
+
+Dont use the original photo to augment, duplicate the images from the original one before each augmentation
+
+1. random shear within 15 degree horizontal and vertical
+
+
+--rotate-90 and blur
+use the above code as a template
+write a python augmentor to augment images and corresponding bounding box.
+
+My file structure:
+images: 1.jpg, 2.jpg
+labels: 1.txt, 2.txt
+
+Dont use the original photo to augment, duplicate the images from the original one before each augmentation
+
+1. clockwise 90 degree rotate
+2. ounter-clockwise 90 degree rotate
+3. around 1 px Gaussian blur (for this augmentation, there should be no change to the bounding box)
+
+
+--rotate 15
+use the above code as a template
+write a python augmentor to augment images and corresponding bounding box.
+
+My file structure:
+images: 1.jpg, 2.jpg
+labels: 1.txt, 2.txt
+
+Dont use the original photo to augment, duplicate the images from the original one before each augmentation
+
+1. -15 degree rotation
+2. 15 degree rotation
+
+
+import os
+import cv2
+import numpy as np
+
+
+def load_bbox(file_path, image_shape):
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+    bboxes = []
+    for line in lines:
+      # logic here
+      pass
+    return bboxes
+
+def save_bbox(file_path, bboxes, image_shape):
+    with open(file_path, 'w') as f:
+        for bbox in bboxes:
+            # logic here
+            pass
+            # f.write(f'{int(class_id)} {center_x} {center_y} {width} {height}\n')
+
+def rotate_bbox(image, bboxes, angle):
+    h, w = image.shape[:2]
+    center = (w // 2, h // 2)
+    M = cv2.getRotationMatrix2D(center, angle, 1)
+
+    rotated_bboxes = []
+    for bbox in bboxes:
+        # logic here
+        pass
+        # rotated_bboxes.append([class_id, xmin, ymin, xmax, ymax])
+
+    return rotated_bboxes
+
+
+def main():
+    image_dir = './augmentation/images'
+    label_dir = './augmentation/labels'
+    aug_image_dir = './augmentation/aug_data/images'
+    aug_label_dir = './augmentation/aug_data/labels'
+    os.makedirs(aug_image_dir, exist_ok=True)
+    os.makedirs(aug_label_dir, exist_ok=True)
+
+    for filename in os.listdir(image_dir):
+        if not filename.endswith('.jpg'):
+            continue
+
+        base = os.path.splitext(filename)[0]
+        image_path = os.path.join(image_dir, filename)
+        label_path = os.path.join(label_dir, base + '.txt')
+
+        image = cv2.imread(image_path)
+        bboxes = load_bbox(label_path, image.shape)
+
+        # Augmentation: clockwise 90 degrees rotation
+        rotated_image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
+        rotated_bboxes = rotate_bbox(image, bboxes, -90)
+        cv2.imwrite(os.path.join(aug_image_dir, base + '_cw90.jpg'), rotated_image)
+        save_bbox(os.path.join(aug_label_dir, base + '_cw90.txt'), rotated_bboxes, image.shape)
+
+        # Augmentation: counter-clockwise 90 degrees rotation
+        rotated_image = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
+        rotated_bboxes = rotate_bbox(image, bboxes, 90)
+        cv2.imwrite(os.path.join(aug_image_dir, base + '_ccw90.jpg'), rotated_image)
+        save_bbox(os.path.join(aug_label_dir, base + '_ccw90.txt'), rotated_bboxes, image.shape)
+
+
+if __name__ == '__main__':
+    main()
